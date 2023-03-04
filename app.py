@@ -289,4 +289,4 @@ for wallet_address in wallet_addresses:
 #         await message.channel.send(response)
 
 # # Run the bot
-# client.run(os.getenv('DISCORD_TOKEN')
+# client.run(os.getenv('DISCORD_TOKEN'))

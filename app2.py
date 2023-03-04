@@ -131,4 +131,4 @@ print(calculate_profit('0xBDcE6D8df8CB76a35aA0109C0736B10Ca5521c55',
 #         await message.channel.send(response)
 
 # # Run the bot
-# client.run(os.getenv('DISCORD_TOKEN')
+# client.run(os.getenv('DISCORD_TOKEN'))
