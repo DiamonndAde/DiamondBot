@@ -1,16 +1,18 @@
 import discord
 import requests
 import os
+from dotenv import load_dotenv
 import json
 from web3 import Web3
 from web3.contract import ConciseContract
 
-ETHERSCAN_API_KEY = 'AQE8RH6N1H4TDSST89IUXHIF8TRXUH64QZ'
-# 0x839c6Ca36F51Fc2DBf466e027B8a57f840dc9C57
+load_dotenv()
+
+ETHERSCAN_API_KEY = os.getenv('ETHERSCAN_API_KEY')
 
 # Instantiate Web3 with Infura API endpoint
 web3 = Web3(Web3.HTTPProvider(
-    'https://mainnet.infura.io/v3/0dabef1094224089b08c07c96398c85b'))
+    f"https://mainnet.infura.io/v3/{os.getenv('INFURA_API_KEY')}"))
 
 # Read the contract ABI from a JSON file
 with open('contract_abi.json') as f:
@@ -20,7 +22,7 @@ with open('contract_abi.json') as f:
 ABI = json.loads(contract_abi_json)
 
 # Replace with the actual contract address and ABI
-CONTRACT_ADDRESS = '0x839c6Ca36F51Fc2DBf466e027B8a57f840dc9C57'
+CONTRACT_ADDRESS = os.getenv('CONTRACT_ADDRESS')
 
 # Instantiate the contract
 contract = web3.eth.contract(address=CONTRACT_ADDRESS, abi=ABI)

@@ -1,16 +1,18 @@
 import discord
 import requests
+from dotenv import load_dotenv
 import os
 import json
 from web3 import Web3
 from web3.contract import ConciseContract
 
-ETHERSCAN_API_KEY = 'AQE8RH6N1H4TDSST89IUXHIF8TRXUH64QZ'
-# 0x839c6Ca36F51Fc2DBf466e027B8a57f840dc9C57
+load_dotenv()
+
+ETHERSCAN_API_KEY = os.getenv('ETHERSCAN_API_KEY')
 
 # Instantiate Web3 with Infura API endpoint
 web3 = Web3(Web3.HTTPProvider(
-    'https://mainnet.infura.io/v3/0dabef1094224089b08c07c96398c85b'))
+    f"https://mainnet.infura.io/v3/{os.getenv('INFURA_API_KEY')}"))
 
 # Read the contract ABI from a JSON file
 
@@ -18,7 +20,7 @@ web3 = Web3(Web3.HTTPProvider(
 def get_contract_abi(contract_address):
     # Set up the Etherscan API endpoint and parameters
     api_endpoint = 'https://api.etherscan.io/api'
-    api_key = 'AQE8RH6N1H4TDSST89IUXHIF8TRXUH64QZ'
+    api_key = os.getenv('ETHERSCAN_API_KEY')
     module = 'contract'
     action = 'getabi'
     address = contract_address
@@ -102,7 +104,7 @@ def calculate_profit(wallet_address, collection_identifier):
 
 
 print(calculate_profit('0xBDcE6D8df8CB76a35aA0109C0736B10Ca5521c55',
-      '0x839c6Ca36F51Fc2DBf466e027B8a57f840dc9C57'))
+      os.getenv('CONTRACT_ADDRESS')))
 
 
 # wallet_addresses = ["0x9Ebd725E2767F4997dC1fA9515e1a6C545B015a9", "0xaF514772FF826159617d19AE1C284027D8118D23", "0x2d70BE92de0F137437633fb4bE55DEf4168e3609", "0xfedA665529d1E8184420C2139Fe01b66be0a3d40", "0xe27737BbF129f5C8aff953f13E65444d0B89Bbe5",
