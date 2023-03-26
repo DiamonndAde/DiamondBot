@@ -1,6 +1,6 @@
 import discord
 import requests
-from flask import Flask, render_template, request, redirect, url_for, send_from_directoryfrom dotenv import load_dotenv
+from flask import Flask, render_template, request
 import os
 import json
 from web3 import Web3
