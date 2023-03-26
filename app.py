@@ -1,7 +1,6 @@
 import discord
 import requests
-from flask import Flask
-from dotenv import load_dotenv
+from flask import Flask, render_template, request, redirect, url_for, send_from_directoryfrom dotenv import load_dotenv
 import os
 import json
 from web3 import Web3
@@ -79,7 +78,7 @@ def index():
 
 @app.route('/profit', methods=['POST'])
 def calculate_profit():
-    data = requests.json
+    data = request.json
     wallet_address = data.get('wallet_address')
     collection_name_or_id = data.get('collection_name_or_id')
 
@@ -120,7 +119,7 @@ async def on_message(message):
 
         data = {'wallet_address': wallet_address,
                 'collection_name_or_id': collection_name_or_id}
-        response = requests.post(
+        response = request.post(
             'https://diamond-bot-opal.vercel.app/profit', json=data)
 
     if response.ok:
