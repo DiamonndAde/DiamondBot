@@ -1,10 +1,10 @@
 import discord
 import requests
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory
+from dotenv import load_dotenv
 import os
 import json
 from web3 import Web3
-from web3.contract import ConciseContract
 
 load_dotenv()
 
