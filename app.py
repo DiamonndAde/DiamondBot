@@ -120,7 +120,8 @@ async def on_message(message):
 
         data = {'wallet_address': wallet_address,
                 'collection_name_or_id': collection_name_or_id}
-        response = requests.post('http://localhost:5000/profit', json=data)
+        response = requests.post(
+            'https://diamond-bot-opal.vercel.app/profit', json=data)
 
     if response.ok:
         result = response.json()
