@@ -77,7 +77,7 @@ def index():
 
 
 @app.route('/profit', methods=['POST'])
-def calculate_profit():
+def calculate_profits():
     data = request.json
     wallet_address = data.get('wallet_address')
     collection_name_or_id = data.get('collection_name_or_id')
