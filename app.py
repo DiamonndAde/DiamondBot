@@ -134,3 +134,6 @@ async def on_message(message):
 
 
 client.run(os.getenv('DISCORD_TOKEN'))
+
+if __name__ == '__main__':
+    app.run()
