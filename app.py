@@ -72,6 +72,11 @@ def calculate_profit(wallet_address, contract_address):
     return profit
 
 
+@app.route('/')
+def index():
+    return 'Hello World!'
+
+
 @app.route('/profit', methods=['POST'])
 def calculate_profit():
     data = requests.json
